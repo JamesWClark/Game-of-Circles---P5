@@ -44,6 +44,13 @@ function Player(x, y, team) {
                 this.up = true;
                 break;
         }
+        switch(key) {
+            case 'f':
+            case 'F':
+            case ' ':
+                sprites.push(new Bullet(this.x, this.y, createVector(0, -10), this.team));
+                break;
+        }
     }
 
     this.keyUp = function () {
