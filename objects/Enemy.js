@@ -2,7 +2,7 @@ function Enemy(x, y, team) {
     this.x = x;
     this.y = y;
     this.team = team;
-    this.size = 50;
+    this.diameter = 50;
     this.speed = 4;
     
     this.move = function() {
@@ -15,7 +15,8 @@ function Enemy(x, y, team) {
     }
     
     this.display = function() {
-        ellipse(this.x, this.y, this.size, this.size);
+        fill(0,0,255);
+        ellipse(this.x, this.y, this.diameter, this.diameter);
     }
     
     this.animate = function() {

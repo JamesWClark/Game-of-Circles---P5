@@ -9,7 +9,6 @@ function Player(x, y, team) {
     this.up = false;
     this.down = false;
     
-    
     this.move = function() {
         if(this.left)  this.x -= this.speed;
         if(this.right) this.x += this.speed;
@@ -21,6 +20,7 @@ function Player(x, y, team) {
     }
     
     this.display = function() {
+        fill(255, 0, 0);
         ellipse(this.x, this.y, this.diameter, this.diameter);
     }
     
@@ -29,7 +29,18 @@ function Player(x, y, team) {
         this.display();
     }
     
+    this.fire = function() {
+        sprites.push(new Bullet(this.x, this.y, createVector(0,-10), playerTeam));
+    }
+    
     this.keyDown = function () {
+        switch(key) {
+            case 'f':
+            case 'F':
+            case ' ':
+                this.fire();
+                break;
+        }
         switch (keyCode) {
             case LEFT_ARROW:
                 this.left = true;
@@ -42,13 +53,6 @@ function Player(x, y, team) {
                 break;
             case UP_ARROW:
                 this.up = true;
-                break;
-        }
-        switch(key) {
-            case 'f':
-            case 'F':
-            case ' ':
-                sprites.push(new Bullet(this.x, this.y, createVector(0, -10), this.team));
                 break;
         }
     }
