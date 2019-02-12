@@ -16,14 +16,6 @@ function setup() {
     
     sprites.push(player);
     sprites.push(new Enemy(150, 50, enemyTeam));
-    sprites.push(new Enemy(250, 50, enemyTeam));
-    sprites.push(new Enemy(350, 50, enemyTeam));
-    sprites.push(new Enemy(450, 50, enemyTeam));
-    sprites.push(new Enemy(150, 50, enemyTeam));
-    sprites.push(new Enemy(250, 50, enemyTeam));
-    sprites.push(new Enemy(350, 50, enemyTeam));
-    sprites.push(new Enemy(450, 50, enemyTeam));
-    sprites.push(new Raindrop(50, 50, enemyTeam));
 }
 
 function draw() {

@@ -1,30 +1,21 @@
 function Enemy(x, y, team) {
-    this.x = x;
-    this.y = y;
-    this.team = team;
-    this.diameter = 50;
-    this.speed = 4;
-    
-    this.move = function() {
-        this.x += this.speed;
-        this.y += random(-2,2);
-        
-        if(this.x < 0 || this.x > width) {
-            this.speed *= -1;
-        }
+    Sprite.call(this, x, y, team);
+}
+
+Enemy.prototype = Object.create(Sprite.prototype);
+Enemy.prototype.constructor = Enemy;
+Enemy.prototype.diameter = 40;
+Enemy.prototype.velocity = createVector(2, 0);
+Enemy.prototype.color = color(255, 0, 0);
+
+Enemy.prototype.move = function() {
+    this.x += this.velocity.x;
+    if(this.x < 0 || this.x > width) {
+        this.velocity.x *= -1;
     }
-    
-    this.display = function() {
-        fill(0,0,255);
-        ellipse(this.x, this.y, this.diameter, this.diameter);
-    }
-    
-    this.animate = function() {
-        this.move();
-        this.display();
-    }
-    
-    this.fire = function() {
-        
-    }
+}
+
+Enemy.prototype.display = function() {
+    fill(this.color);
+    ellipse(this.x, this.y, this.diameter, this.diameter);
 }

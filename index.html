@@ -9,10 +9,21 @@
         <h1>Game of Circles</h1>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+
+        <script>
+            // on demand global mode
+            // https://github.com/processing/p5.js/wiki/p5.js-overview#why-cant-i-assign-variables-using-p5-functions-and-variables-before-setup
+            new p5();
+        </script>
+        
+        <script src="objects/Sprite.js"></script>
         <script src="objects/Raindrop.js"></script>
         <script src="objects/Bullet.js"></script>
         <script src="objects/Enemy.js"></script>
         <script src="objects/Player.js"></script>
+        
+        <script src="managers/SpriteManager.js"></script>
+        
         <script src="main.js"></script>
     </body>
     
