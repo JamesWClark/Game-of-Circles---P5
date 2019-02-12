@@ -23,10 +23,12 @@ function setup() {
     sprites.push(new Enemy(250, 50, enemyTeam));
     sprites.push(new Enemy(350, 50, enemyTeam));
     sprites.push(new Enemy(450, 50, enemyTeam));
+    sprites.push(new Raindrop(50, 50, enemyTeam));
 }
 
 function draw() {
     background(200);
+    
     for(var i = 0; i < sprites.length; i++) {
         sprites[i].animate();
         for(var j = i + 1; j < sprites.length; j++) {
