@@ -1,22 +1,14 @@
 function Bullet(x, y, vector, team) {
-    this.x = x;
-    this.y = y;
-    this.team = team;
+    Sprite.call(this, x, y, team);
     this.vector = vector;
-    this.diameter = 10;
-    
-    this.move = function() {
-        this.x += vector.x;
-        this.y += vector.y;
-    }
-    
-    this.display = function() {
-        fill(0);
-        ellipse(this.x, this.y, this.diameter, this.diameter);
-    }
-    
-    this.animate = function() {
-        this.move();
-        this.display();
-    }
+}
+
+Bullet.prototype = Object.create(Sprite.prototype);
+Bullet.prototype.constructor = Bullet;
+Bullet.prototype.color = color(0);
+Bullet.prototype.diameter = 10;
+
+Bullet.prototype.move = function() {
+    this.x += this.vector.x;
+    this.y += this.vector.y;
 }

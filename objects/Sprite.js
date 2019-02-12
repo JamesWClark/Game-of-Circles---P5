@@ -8,6 +8,9 @@ function Sprite(x, y, team) {
     }
 }
 
+Sprite.prototype.color = color(255);
+Sprite.prototype.diameter = 50;
+
 Sprite.prototype.handleCollision = function() {
     _SM.destroy(this);
 }
@@ -18,7 +21,7 @@ Sprite.prototype.isColliding = function(other) {
     var distance = dist(this.x, this.y, other.x, other.y);
     return radius1 + radius2 > distance;
 }
-/**
+
 Sprite.prototype.move = function() {
     // does nothing
 }
@@ -27,7 +30,7 @@ Sprite.prototype.display = function() {
     fill(this.color);
     ellipse(this.x, this.y, this.diameter, this.diameter);
 }
-*/
+
 Sprite.prototype.animate = function() {
     this.move();
     this.display();
