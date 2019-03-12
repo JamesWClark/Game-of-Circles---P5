@@ -1,5 +1,6 @@
 function SpriteManager() {
-    var player = new Player(width / 2, height - 100);
+    
+    var player;
     
     var sprites = [];
     var destroyed = [];
@@ -7,7 +8,12 @@ function SpriteManager() {
     this.getPlayer = function() {
         return player;
     }
-        
+
+    this.setPlayer = function(playerInstance) {
+        player = playerInstance;
+        this.spawn(player);
+    }
+    
     this.spawn = function(obj) {
         sprites.push(obj);
     }
@@ -16,7 +22,7 @@ function SpriteManager() {
         destroyed.push(target);
     }
     
-    this.animate = function() {
+    this.manage = function() {
         for(var i = 0; i < sprites.length; i++) {
             sprites[i].animate();
         }
@@ -29,12 +35,19 @@ function SpriteManager() {
             for(var j = i + 1; j < sprites.length; j++) {
                 var a = sprites[i];
                 var b = sprites[j];
-                if(a.team !== b.team && a.isColliding(b)) {
+                if(a.team !== b.team && collision(a, b)) {
                     sprites[i].handleCollision();
                     sprites[j].handleCollision();
                 }
             }
         }
+    }
+    
+    function collision(a, b) {
+        var radius1 = a.diameter / 2;
+        var radius2 = b.diameter / 2;
+        var distance = dist(a.x, a.y, b.x, b.y);
+        return radius1 + radius2 > distance;
     }
     
     function bringOutTheDead() {  

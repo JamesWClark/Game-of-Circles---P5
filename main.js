@@ -1,54 +1,29 @@
-// player
-var player;
-
-// teams
-var playerTeam = 1;
-var enemyTeam = 2;
-
-// an array of sprites
-var sprites = []; // how we create a new empty array
+var _SM = new SpriteManager();
 
 function setup() {
     createCanvas(575, 500);
-    
-    // make the player
-    player = new Player(width/2, height-50, playerTeam);
-    
-    sprites.push(player);
-    sprites.push(new Enemy(150, 50, enemyTeam));
+
+    _SM.setPlayer(new Player(width/2, height-100, 1));
+    _SM.spawn(new Raindrop(200, -50, 2));
+    _SM.spawn(new Raindrop(300, -50, 2));
+    _SM.spawn(new Raindrop(100, -50, 2));
+    _SM.spawn(new Enemy(150, 50, 2));
+    _SM.spawn(new Enemy(250, 50, 2));
+    _SM.spawn(new Enemy(350, 50, 2));
+    _SM.spawn(new ScreenSaverBot(50, 50, 2));
 }
 
 function draw() {
     background(200);
-    
-    for(var i = 0; i < sprites.length; i++) {
-        sprites[i].animate();
-        for(var j = i + 1; j < sprites.length; j++) {
-            if(isColliding(sprites[i], sprites[j])) {
-                console.log('collision detected');
-                sprites.splice(i, 1);
-                sprites.splice(j, 1);
-            }
-        }
-    }
-}
-
-function isColliding(a, b) {
-    var r1 = a.diameter / 2;
-    var r2 = b.diameter / 2;
-    var d = Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
-    if(r1 + r2 > d && a.team !== b.team) {
-        return true;
-    }
-    return false;
+    _SM.manage();
 }
 
 // key goes down
 function keyPressed() {
-    player.keyDown();
+    _SM.getPlayer().keyDown();
 }
 
 // key comes up
 function keyReleased() {
-    player.keyUp();
+    _SM.getPlayer().keyUp();
 }
