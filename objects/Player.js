@@ -1,5 +1,6 @@
 function Player(x, y, team) {
     Sprite.call(this, x, y, team);
+    this.weapon = new Simpleton(this);
 }
 
 Player.prototype = Object.create(Sprite.prototype);
@@ -26,7 +27,9 @@ Player.prototype.move = function() {
 }
 
 Player.prototype.fire = function() {
-    _SM.spawn(new Bullet(this.x, this.y, createVector(0,-10), this.team));
+    if(this.weapon) {
+        this.weapon.fire(createVector(0, -10));
+    }
 }
     
 Player.prototype.keyDown = function () {
