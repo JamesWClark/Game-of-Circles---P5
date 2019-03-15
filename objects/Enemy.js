@@ -20,7 +20,6 @@ Enemy.prototype.move = function () {
         var vector = this.aim(_SM.getPlayer());
         this.fire(vector);
     }
-
 }
 
 Enemy.prototype.aim = function (target) {

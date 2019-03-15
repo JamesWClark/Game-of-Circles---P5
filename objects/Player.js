@@ -1,6 +1,6 @@
 function Player(x, y, team) {
     Sprite.call(this, x, y, team);
-    this.weapon = new Simpleton(this);
+    this.weapon = new SpreadShot(this);
 }
 
 Player.prototype = Object.create(Sprite.prototype);
