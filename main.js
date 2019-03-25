@@ -11,6 +11,7 @@ function setup() {
     _SM.spawn(new Enemy(250, 50, 2));
     _SM.spawn(new Enemy(350, 50, 2));
     _SM.spawn(new ScreenSaverBot(50, 50, 2));
+    _SM.spawn(new ArmoredTurret(width - 100, 100, 2));
 }
 
 function draw() {

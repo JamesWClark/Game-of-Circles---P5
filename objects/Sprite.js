@@ -27,6 +27,7 @@ Sprite.prototype.move = function() {
 }
 
 Sprite.prototype.display = function() {
+    noStroke();
     fill(this.color);
     ellipse(this.x, this.y, this.diameter, this.diameter);
 }
