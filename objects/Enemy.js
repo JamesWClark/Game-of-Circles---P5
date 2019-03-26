@@ -23,10 +23,13 @@ Enemy.prototype.move = function () {
 }
 
 Enemy.prototype.aim = function (target) {
-    var distance = Math.sqrt(Math.pow(target.x - this.x, 2) + Math.pow(target.y - this.y, 2));
-
-    // solve unit vector problem here
-    return createVector(0, 4);
+    var xCom = target.x - this.x;
+    var yCom = target.y - this.y;
+    var distance = Math.sqrt(xCom * xCom + yCom * yCom);
+    var xUnit = xCom / distance;
+    var yUnit = yCom / distance;
+    var magnitude = 7;
+    return createVector(xUnit * magnitude, yUnit * magnitude);
 }
 
 Enemy.prototype.fire = function (vector) {
