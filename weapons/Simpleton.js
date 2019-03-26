@@ -1,8 +1,8 @@
 function Simpleton(handler) {
     this.handler = handler;
     
-    var mark = 1000;
-    var wait = 1000;
+    var mark = millis();
+    var wait = 100;
     
     this.fire = function(vector) {
         if(millis() - mark > wait) {

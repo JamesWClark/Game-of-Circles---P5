@@ -1,6 +1,7 @@
 function Player(x, y, team) {
     Sprite.call(this, x, y, team);
-    this.weapon = new SpreadShot(this);
+    this.weapon = new Simpleton(this);
+    this.hostile = false;
 }
 
 Player.prototype = Object.create(Sprite.prototype);
@@ -24,10 +25,12 @@ Player.prototype.move = function() {
 
     this.x = constrain(this.x, this.diameter / 2, width  - this.diameter / 2);
     this.y = constrain(this.y, this.diameter / 2, height - this.diameter / 2);
+    
+    this.fire();
 }
 
 Player.prototype.fire = function() {
-    if(this.weapon) {
+    if(this.weapon && this.hostile) {
         this.weapon.fire(createVector(0, -10));
     }
 }
@@ -37,7 +40,13 @@ Player.prototype.keyDown = function () {
         case 'f':
         case 'F':
         case ' ':
-            this.fire();
+            this.hostile = true;
+            break;
+        case '1':
+            this.weapon = new Simpleton(this);
+            break;
+        case '2':
+            this.weapon = new SpreadShot(this);
             break;
     }
     switch (keyCode) {
@@ -57,6 +66,13 @@ Player.prototype.keyDown = function () {
 }
 
 Player.prototype.keyUp = function () {
+    switch(key) {
+        case 'f':
+        case 'F':
+        case ' ':
+            this.hostile = false;
+            break;
+    }
     switch (keyCode) {
         case LEFT_ARROW:
             this.left = false;
