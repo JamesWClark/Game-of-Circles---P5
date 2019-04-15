@@ -2,8 +2,8 @@ function SpriteManager() {
     
     var player;
     
-    var sprites = [];
-    var destroyed = [];
+    var sprites = []; // active sprites
+    var destroyed = []; // destroyed sprites
     
     this.getPlayer = function() {
         return player;
@@ -23,11 +23,15 @@ function SpriteManager() {
     }
     
     this.manage = function() {
+        updateCoordinates();
+        checkCollisions();
+        bringOutTheDead();
+    }
+    
+    function updateCoordinates() {
         for(var i = 0; i < sprites.length; i++) {
             sprites[i].animate();
         }
-        checkCollisions();
-        bringOutTheDead();
     }
     
     function checkCollisions() {
