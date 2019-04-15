@@ -10,6 +10,8 @@ function Sprite(x, y, team) {
 
 Sprite.prototype.color = color(255);
 Sprite.prototype.diameter = 50;
+Sprite.prototype.w = 50;
+Sprite.prototype.h = 50;
 
 Sprite.prototype.handleCollision = function() {
     _SM.destroy(this);
@@ -29,7 +31,7 @@ Sprite.prototype.move = function() {
 Sprite.prototype.display = function() {
     noStroke();
     fill(this.color);
-    ellipse(this.x, this.y, this.diameter, this.diameter);
+    rect(this.x, this.y, this.w, this.h);
 }
 
 Sprite.prototype.animate = function() {

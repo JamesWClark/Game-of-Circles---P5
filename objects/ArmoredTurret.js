@@ -4,9 +4,8 @@ function ArmoredTurret(x, y, team) {
     this.armor = 10;
 }
 
-ArmoredTurret.prototype = Object.create(Sprite.prototype);
+ArmoredTurret.prototype = Object.create(ArmoredEnemy.prototype);
 ArmoredTurret.prototype.constructor = ArmoredTurret;
-ArmoredTurret.prototype.diameter = 40;
 ArmoredTurret.prototype.color = color(255, 0, 0);
 ArmoredTurret.prototype.wait = 700;
 
@@ -21,7 +20,7 @@ ArmoredTurret.prototype.display = function() {
     stroke(50);
     strokeWeight(this.armor);
     fill(this.color);
-    ellipse(this.x, this.y, this.diameter, this.diameter);
+    rect(this.x, this.y, this.w, this.h);
     noStroke();
 }
 

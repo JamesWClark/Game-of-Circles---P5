@@ -3,6 +3,7 @@ var _UI = new UIManager();
 
 function setup() {
     createCanvas(575, 500);
+    // rectMode(CENTER);
 
     _SM.setPlayer(new Player(width/2, height-100, 1));
     _SM.spawn(new ArmoredEnemy(width - 100, 100, 2));

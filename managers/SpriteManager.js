@@ -48,10 +48,11 @@ function SpriteManager() {
     }
     
     function collision(a, b) {
-        var radius1 = a.diameter / 2;
-        var radius2 = b.diameter / 2;
-        var distance = dist(a.x, a.y, b.x, b.y);
-        return radius1 + radius2 > distance;
+        if (a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     function bringOutTheDead() {  

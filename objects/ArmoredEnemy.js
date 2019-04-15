@@ -6,6 +6,8 @@ function ArmoredEnemy(x, y, team) {
 ArmoredEnemy.prototype = Object.create(Enemy.prototype);
 ArmoredEnemy.prototype.constructor = ArmoredEnemy;
 ArmoredEnemy.prototype.diameter = 80;
+ArmoredEnemy.prototype.w = 80;
+ArmoredEnemy.prototype.h = 80;
 ArmoredEnemy.prototype.velocity = createVector(2, 0);
 ArmoredEnemy.prototype.color = color(200, 0, 0);
 ArmoredEnemy.prototype.wait = 700;
@@ -23,7 +25,7 @@ ArmoredEnemy.prototype.display = function() {
     stroke(50);
     strokeWeight(this.armor);
     fill(this.color);
-    ellipse(this.x, this.y, this.diameter, this.diameter);
+    rect(this.x, this.y, this.w, this.h);
     noStroke();
 }
 
